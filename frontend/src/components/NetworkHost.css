@@ -1,0 +1,23 @@
+.network-host {
+    border: 1px solid gray;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: top;
+    color: black;
+    margin: 5px;
+    padding: 5px;
+    width: 0.2vw;
+    min-width: 250px;
+    min-height: 100px;
+}
+.network-host-label {
+    font-weight: bold;
+}
+.network-host-vendor, .network-host-os {
+    font-size: 10pt;
+    color: gray;
+}
+.network-host-warning {
+    font-size: 10pt;
+    color: gray;
+}

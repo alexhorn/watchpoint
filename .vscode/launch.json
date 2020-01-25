@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "justMyCode": false
+        },
+        {
+            "name": "Scanner",
+            "type": "python",
+            "request": "launch",
+            "module": "scanner.main",
+            "env": {
+                "WATCHPOINT_CONFIG_FILE": "${workspaceFolder}/config.dev.ini"
+            },
+            "cwd": "${workspaceFolder}/"
+        },
+        {
+            "name": "DHCP Scanner",
+            "type": "python",
+            "request": "launch",
+            "module": "scanner.main_dhcp",
+            "env": {
+                "WATCHPOINT_CONFIG_FILE": "${workspaceFolder}/config.dev.ini"
+            },
+            "cwd": "${workspaceFolder}/"
+        },
+        {
+            "name": "Backend",
+            "type": "python",
+            "request": "launch",
+            "module": "flask",
+            "args": [
+                "run"
+            ],
+            "env": {
+                "FLASK_APP": "backend.app",
+                "WATCHPOINT_CONFIG_FILE": "${workspaceFolder}/config.dev.ini"
+            },
+            "cwd": "${workspaceFolder}/"
+        }
+    ]
+}

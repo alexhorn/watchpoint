@@ -1,0 +1,8 @@
+bitstruct==8.8.1
+Flask==1.1.1
+Flask-SQLAlchemy==2.4.1
+requests==2.22.0
+smbprotocol==0.2.0
+SQLAlchemy==1.3.10
+uPnPClient==0.0.8
+zeroconf==0.24.0
