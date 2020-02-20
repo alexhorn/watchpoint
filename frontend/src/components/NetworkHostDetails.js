@@ -56,8 +56,10 @@ class NetworkHostDetails extends React.Component {
       vulnerabilities_table = (
         <table className="table host-vulnerabilities-table">
           <thead>
-            <th><FormattedMessage id="type" /></th>
-            <th><FormattedMessage id="description" /></th>
+            <tr>
+              <th><FormattedMessage id="type" /></th>
+              <th><FormattedMessage id="description" /></th>
+            </tr>
           </thead>
           <tbody>
             {this.state.vulnerabilities.map(vuln => <tr key={vuln.id}>
@@ -78,8 +80,10 @@ class NetworkHostDetails extends React.Component {
       services_table = (
         <table className="table host-services-table">
           <thead>
-            <th><FormattedMessage id="type" /></th>
-            <th><FormattedMessage id="address" /></th>
+            <tr>
+              <th><FormattedMessage id="type" /></th>
+              <th><FormattedMessage id="address" /></th>
+            </tr>
           </thead>
           <tbody>
             {this.state.services.map(svc => <tr key={svc.id}>
