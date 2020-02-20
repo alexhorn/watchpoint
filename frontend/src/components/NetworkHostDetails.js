@@ -2,8 +2,9 @@ import React from 'react';
 import {Container, Button} from 'react-bootstrap';
 import ApiClient from '../utils/ApiClient';
 import ActivityChart from './ActivityChart';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
-export default class NetworkHostDetails extends React.Component {
+class NetworkHostDetails extends React.Component {
     constructor(props) {
         super(props);
 
@@ -21,7 +22,7 @@ export default class NetworkHostDetails extends React.Component {
     editDevice() {
         const {params} = this.props.match;
         const deviceId = parseInt(params.deviceId);
-        const label = prompt("Neue Bezeichnung?", this.state.label)
+        const label = prompt(this.props.intl.formatMessage({id: "new_label:"}), this.state.label)
         if (label) {
             this.api.updateDevice(deviceId, {label})
                 .catch(alert);
@@ -55,8 +56,8 @@ export default class NetworkHostDetails extends React.Component {
             vulnerabilities_table = (
                 <table className="table host-vulnerabilities-table">
                     <thead>
-                        <th>Typ</th>
-                        <th>Beschreibung</th>
+                        <th><FormattedMessage id="type" /></th>
+                        <th><FormattedMessage id="description" /></th>
                     </thead>
                     <tbody>
                         {this.state.vulnerabilities.map(vuln => <tr>
@@ -68,7 +69,7 @@ export default class NetworkHostDetails extends React.Component {
             );
         } else {
             vulnerabilities_table = (
-                <div>Keine Schwachstellen gefunden</div>
+                <div><FormattedMessage id="no_vulnerabilities_found" /></div>
             );
         }
 
@@ -77,8 +78,8 @@ export default class NetworkHostDetails extends React.Component {
             services_table = (
                 <table className="table host-services-table">
                     <thead>
-                        <th>Typ</th>
-                        <th>Adresse</th>
+                        <th><FormattedMessage id="type" /></th>
+                        <th><FormattedMessage id="address" /></th>
                     </thead>
                     <tbody>
                         {this.state.services.map(service => <tr>
@@ -90,7 +91,7 @@ export default class NetworkHostDetails extends React.Component {
             );
         } else {
             services_table = (
-                <div>Keine Dienste gefunden</div>
+                <div><FormattedMessage id="no_services_found" /></div>
             );
         }
 
@@ -98,47 +99,49 @@ export default class NetworkHostDetails extends React.Component {
             <Container className="host-details">
                 <h2>
                     {this.state.label || this.state.hostname}
-                    <Button variant="link" onClick={() => this.editDevice()}>Umbenennen</Button>
+                    <Button variant="link" onClick={() => this.editDevice()}><FormattedMessage id="rename" /></Button>
                 </h2>
                 <h4>Details</h4>
                 <table className="table host-details-table">
                     <tbody>
                         <tr>
-                            <td>Letzte Aktivität</td>
+                            <td><FormattedMessage id="last_active" /></td>
                             <td>{this.state.last_heartbeat}</td>
                         </tr>
                         <tr>
-                            <td>IP-Adresse</td>
+                            <td><FormattedMessage id="ip_address" /></td>
                             <td>{this.state.ip_address}</td>
                         </tr>
                         <tr>
-                            <td>MAC-Adresse</td>
+                            <td><FormattedMessage id="mac_address" /></td>
                             <td>{this.state.mac_address}</td>
                         </tr>
                         <tr>
-                            <td>Hersteller</td>
+                            <td><FormattedMessage id="manufacturer" /></td>
                             <td>{this.state.mac_vendor}</td>
                         </tr>
                         <tr>
-                            <td>Hostname</td>
-                            <td>{this.state.hostname && this.state.hostname !== this.state.ip_address ? this.state.hostname : '(keiner)'}</td>
+                            <td><FormattedMessage id="hostname" /></td>
+                            <td>{this.state.hostname && this.state.hostname !== this.state.ip_address ? this.state.hostname : <FormattedMessage id="(none)" />}</td>
                         </tr>
                         {identity_rows}
                     </tbody>
                 </table>
                 <br />
-                <h4>Schwachstellen</h4>
+                <h4><FormattedMessage id="vulnerabilities" /></h4>
                 {vulnerabilities_table}
                 <br />
-                <h4>Angebotene Dienste</h4>
+                <h4><FormattedMessage id="services" /></h4>
                 {services_table}
                 <br />
-                <h4>Aktivität</h4>
-                <h5>Nach Stunden</h5>
+                <h4><FormattedMessage id="activity" /></h4>
+                <h5><FormattedMessage id="by_hours" /></h5>
                 <ActivityChart data={this.state.activity.hours} unit="hour" />
-                <h5>Nach Wochentag</h5>
+                <h5><FormattedMessage id="by_weekdays" /></h5>
                 <ActivityChart data={this.state.activity.weekdays} unit="weekday" />
             </Container> 
         );
     }
 }
+
+export default injectIntl(NetworkHostDetails);

@@ -2,6 +2,7 @@ import React from 'react';
 import {Container} from 'react-bootstrap';
 import ApiClient from '../utils/ApiClient';
 import NetworkHost from './NetworkHost';
+import { FormattedMessage } from 'react-intl';
 
 export default class NetworkOverview extends React.Component {
     constructor(props) {
@@ -24,7 +25,9 @@ export default class NetworkOverview extends React.Component {
     render() {
         return (
             <Container>
-                <h2>Netzwerkübersicht</h2>
+                <h2>
+                    <FormattedMessage id="network_overview" />
+                </h2>
                 {this.state.devices.map(device => <NetworkHost key={device.mac_address} device={device}/>)}
             </Container>
         );

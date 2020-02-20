@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import ApiClient from '../utils/ApiClient';
 import './NetworkHost.css';
+import { FormattedMessage } from 'react-intl';
 
 export default class NetworkHost extends React.Component {
     constructor(props) {
@@ -37,7 +38,7 @@ export default class NetworkHost extends React.Component {
                     <div className="network-host-label">{this.props.device.label || this.props.device.hostname || this.props.device.mac_address}</div>
                     {this.getOperatingSystem() && <div className="network-host-os">{this.getOperatingSystem()}</div>}
                     {this.state.mac_vendor && <div className="network-host-vendor">{this.state.mac_vendor}</div>}
-                    {this.state.vulnerabilities.length > 0 && <span className="network-host-warning" role="img" aria-label="Warning">⚠️ Aufmerksamkeit erforderlich</span>}
+                    {this.state.vulnerabilities.length > 0 && <span className="network-host-warning" role="img" aria-label="Warning">⚠️ <FormattedMessage id="attention_required" /></span>}
                 </div>
             </Link>
         );
