@@ -1,9 +1,9 @@
 import React from 'react';
 import {
+  Route,
   BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+  Switch
+} from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 import NetworkOverview from './components/NetworkOverview';
 import NetworkHostDetails from './components/NetworkHostDetails';
@@ -12,7 +12,7 @@ import './App.css';
 import messages_en from './messages/en.json';
 import messages_de from './messages/de.json';
 
-const DEFAULT_LANGUAGE = "en";
+const DEFAULT_LANGUAGE = 'en';
 const messages = {en: messages_en, de: messages_de};
 const language = navigator.language.split(/[-_]/)[0];
 
