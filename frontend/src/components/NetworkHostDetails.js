@@ -23,7 +23,7 @@ class NetworkHostDetails extends React.Component {
     const {params} = this.props.match;
     const deviceId = parseInt(params.deviceId);
     const label = prompt(this.props.intl.formatMessage({id: 'new_label:'}), this.state.label);
-    if (label) {
+    if (label !== null) {
       this.api.updateDevice(deviceId, {label})
         .catch(alert);
       this.setState({label});
