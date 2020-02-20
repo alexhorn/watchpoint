@@ -4,6 +4,10 @@ import { FormattedMessage } from 'react-intl';
 import ApiClient from '../utils/ApiClient';
 import NetworkHost from './NetworkHost';
 
+function compareDevices(a, b) {
+  return (a.label || a.hostname || a.mac_address).localeCompare(b.label || b.hostname || b.mac_address);
+}
+
 export default class NetworkOverview extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +21,7 @@ export default class NetworkOverview extends React.Component {
     this.api = new ApiClient();
     this.api.getDevices()
       .then(({devices}) => {
+        devices.sort(compareDevices);
         this.setState({devices});
       })
       .catch(alert);
