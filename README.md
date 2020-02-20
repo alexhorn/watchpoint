@@ -2,6 +2,10 @@
 
 A network monitoring system for home networks. Scans your network for connected devices and identifies open ports, Bonjour and UPnP services and services with no or weak authentication. Designed to be easy to install and use.
 
+## Screenshots
+[![Screenshot of network overview](docs/overview_256.png)](docs/overview.png)
+[![Screenshot of device details](docs/details_256.png)](docs/details.png)
+
 ## Installation
 
 ### Via Docker
